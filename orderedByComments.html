@@ -1,0 +1,150 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title>Prototype</title>
+
+	<script src='https://code.jquery.com/jquery-2.2.3.min.js'></script>
+	<script src="jquery.csv.js"></script>
+
+	<link href='https://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Raleway:400,300,200' rel='stylesheet' type='text/css'>
+	<link href='style.css' rel='stylesheet'>
+</head>
+
+<body>
+
+<div class='filterlist'>
+		<h1> Click here for images ordered by:</h1>
+		<a href='index.html'>Highest Likes</a><br>
+	</div>
+
+	<div class='container' id='palettefeed'>
+		<div class='fixedheader'>
+			<h2 class='headertitle'>Palette</h2>
+		</div>
+		<div class='underheader'>
+		</div>
+		<ul class='imgfeed' id='ulContainer'>
+			
+		</ul>
+		
+	</div>
+	<div class='container' id='landing' class='signup'>
+
+		<h1 class='maintitle'>Palette</h1>
+		<h2 class='sectitle'>Experience the colours of Melbourne Spring Fashion Week</h2>
+		<h3 class='login'>Login</h3>
+		<input class='formbutton' type="button" name="answer" value="Get Started" onclick="showDiv()" />
+		<h2 class='sectitle'>with<br>Instagram</h2>
+	</div>
+	<div class='container' id='details'>
+		<h2 class='sectitle'>Enter Your Instagram Details</h2>
+		<h3>Username</h3>
+		<h3>Password</h3>
+		<input class='formbutton' type="button" name="answer" value="Continue" onclick="showFeed()" />
+	</div>
+
+<script src='colourPaletteComments.js'></script>
+<script type="text/javascript">
+
+
+	function logId(str) {
+		console.log(data[1][1]);
+	  console.log(str);
+	  var showDiv = document.getElementById(str).children[2];
+
+	  var elems = document.getElementsByClassName('imgfeedcontainer');
+
+	  var element = document.getElementById(str);
+	  var svg = element.children[0];
+	 var svgOpacity = window.getComputedStyle(svg).getPropertyValue('opacity');
+
+	  var rect1 = svg.children[0];
+	  var rect2 = svg.children[1];
+	  var rect3 = svg.children[2];
+	  var height = window.getComputedStyle(element).getPropertyValue('height');
+	  var height2 = '187.5px';
+	  var compare = height.localeCompare(height2);
+
+	  var count = elems.length;
+
+	  
+	  //console.log('Opacity: ' + svgOpacity);
+
+	  for (var i = 0; i < elems.length; i++) {
+	    elems[i].style.height = "187.5px";
+	    showDiv.style.display = 'none';
+	    //svg.style.opacity = svgOpacity;
+
+	    var svgPalette = document.getElementsByClassName('palettesvg');
+	  var rect = svgPalette[i].children;
+
+	    rect[0].setAttribute('y', '0');
+	    rect[0].setAttribute('height', '100%');
+	    rect[1].setAttribute('y', '0');
+	    rect[1].setAttribute('height', '100%');
+	    rect[2].setAttribute('y', '0');
+	    rect[2].setAttribute('height', '100%');
+	    /*rect2.setAttribute('y', '0');
+	    rect2.setAttribute('height', '100%');
+	    rect3.setAttribute('y', '0');
+	    rect3.setAttribute('height', '100%');*/
+
+	  }
+
+
+	  if (compare == 0) {
+	  	document.getElementById(str).style.transition = 'height .2s ease';
+	  	document.getElementById(str).style.height = "580px";
+	  	showDiv.style.display = 'block';
+	    
+
+	    //svg.style.opacity = '1';
+
+	    rect1.setAttribute('y', '374.5px');
+	    rect1.setAttribute('height', '25px');
+	    rect2.setAttribute('y', '374.5px');
+	    rect2.setAttribute('height', '25px');
+	    rect3.setAttribute('y', '374.5px');
+	    rect3.setAttribute('height', '25px');
+
+	  } else {
+	  	document.getElementById(str).style.transition = 'height .2s ease';
+	  	document.getElementById(str).style.height = "187.5px";
+	  	showDiv.style.display = 'none';
+
+
+
+	    //svg.style.opacity = svgOpacity;
+	    console.log(svgOpacity);
+
+	    rect1.setAttribute('y', '0');
+	    rect1.setAttribute('height', '100%');
+	    rect2.setAttribute('y', '0');
+	    rect2.setAttribute('height', '100%');
+	    rect3.setAttribute('y', '0');
+	    rect3.setAttribute('height', '100%');
+	  }
+	  
+
+}
+</script>
+<script type="text/javascript">
+	function showDiv() {
+   document.getElementById('details').style.display = "block";
+   document.getElementById('landing').style.display = "none";
+}
+</script>
+<script type="text/javascript">
+	function showFeed() {
+   document.getElementById('palettefeed').style.display = "block";
+   document.getElementById('details').style.display = "none";
+}
+</script>
+</body>
+
+</html>
